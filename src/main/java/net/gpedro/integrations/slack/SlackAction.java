@@ -4,32 +4,27 @@ import com.google.gson.JsonObject;
 
 /**
  * @author Galimov Ruslan
+ * @author Desmond Vehar
  */
 public class SlackAction {
 
 	private static final String NAME = "name";
 	private static final String TEXT = "text";
 	private static final String TYPE = "type";
-	private static final String VALUE = "value";
-	private static final String CONFIRM = "confirm";
+	private static final String URL = "url";
 	private static final String STYLE = "style";
-	private static final String OPTIONS = "options";
-	private static final String OPTION_GROUPS = "option_groups";
-	private static final String DATA_SOURCE = "data_source";
-	private static final String SELECTED_OPTIONS = "selected_options";
-	private static final String MIN_QUERY_LENGTH = "min_query_length";
 
 	private String name;
 	private String text;
 	private SlackActionType type;
-	private String value;
+	private String url;
 	private SlackActionStyle style;
 
-	public SlackAction(String name, String text, SlackActionType type, String value) {
+	public SlackAction(String name, String text, SlackActionType type, String url) {
 		this.name = name;
 		this.text = text;
 		this.type = type;
-		this.value = value;
+		this.url = url;
 	}
 
 	public String getName() {
@@ -56,12 +51,12 @@ public class SlackAction {
 		this.type = type;
 	}
 
-	public String getValue() {
-		return value;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public SlackActionStyle getStyle() {
@@ -74,14 +69,14 @@ public class SlackAction {
 
 	public JsonObject toJson() {
 		final JsonObject data = new JsonObject();
+
 		data.addProperty(NAME, name);
 		data.addProperty(TEXT, text);
+		data.addProperty(URL, url);
 
 		if (type != null) {
 			data.addProperty(TYPE, type.getCode());
 		}
-
-		data.addProperty(VALUE, value);
 
 		if (style != null) {
 			data.addProperty(STYLE, style.getCode());
