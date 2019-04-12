@@ -17,7 +17,6 @@ public class SlackMessage {
 	private static final String UNFURL_LINKS = "unfurl_links";
 	private static final String TEXT = "text";
 	private static final String ATTACHMENTS = "attachments";
-	private static final String LINK_NAMES = "link_names";
 
 	private List<SlackAttachment> attach = new ArrayList<SlackAttachment>();
 	private String channel = null;
@@ -85,7 +84,6 @@ public class SlackMessage {
 
 		slackMessage.addProperty(UNFURL_MEDIA, unfurlMedia);
 		slackMessage.addProperty(UNFURL_LINKS, unfurlLinks);
-		slackMessage.addProperty(LINK_NAMES, linkNames);
 
 		if (text == null) {
 			throw new IllegalArgumentException("Missing Text field @ SlackMessage");
